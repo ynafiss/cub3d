@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 20:50:20 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/13 15:00:32 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/14 10:01:44 by ynafiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <stdlib.h>
 # include <string.h>
 
-# define W 2000
-# define H 2000
+# define W 1000
+# define H 1000
 
 typedef struct s_arg
 {

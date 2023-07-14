@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exc.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 20:19:49 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/13 15:36:19 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/14 12:16:34 by ynafiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	ft_move_dir(char **map, t_mlx *p, int x, int y)
 	{
 		if(map[(int)((p->y_p - sin(p->angle)) / 20)][(int)((p->x_p + cos(p->angle)) / 20)] != '1')
 		{
-			p->x_p  = p->x_p + cos(p->angle);
-			p->y_p  = p->y_p - sin(p->angle);
+			p->x_p  = p->x_p + cos(p->angle)*3;
+			p->y_p  = p->y_p - sin(p->angle)*3;
 		}
 		put_player(p);
 		put_line(p, 25);
@@ -83,8 +83,8 @@ void	ft_move_dir(char **map, t_mlx *p, int x, int y)
 	{
 		if(map[(int)((p->y_p + sin(p->angle)) / 20)][(int)((p->x_p - cos(p->angle)) / 20)] != '1' )
 		{
-			p->x_p  = p->x_p - cos(p->angle);
-			p->y_p  = p->y_p + sin(p->angle);
+			p->x_p  = p->x_p - cos(p->angle)*3;
+			p->y_p  = p->y_p + sin(p->angle)*3;
 		}
 	put_player(p);
 		put_line(p, 25);
@@ -93,8 +93,8 @@ void	ft_move_dir(char **map, t_mlx *p, int x, int y)
 	{
 		if(map[(int)((p->y_p - sin(p->angle + M_PI/2)) / 20)][(int)((p->x_p + cos(p->angle + M_PI/2)) / 20)] != '1' )
 		{
-			p->x_p  = p->x_p + cos(p->angle + M_PI/2);
-			p->y_p  = p->y_p - sin(p->angle + M_PI/2);
+			p->x_p  = p->x_p + cos(p->angle + M_PI/2)*3;
+			p->y_p  = p->y_p - sin(p->angle + M_PI/2)*3;
 		}
 	put_player(p);
 		put_line(p, 25);
@@ -103,8 +103,8 @@ void	ft_move_dir(char **map, t_mlx *p, int x, int y)
 	{
 		if(map[(int)((p->y_p - sin(p->angle - M_PI/2)) / 20)][(int)((p->x_p + cos(p->angle - M_PI/2)) / 20)] != '1')
 		{
-			p->x_p  = p->x_p + cos(p->angle - M_PI/2);
-			p->y_p  = p->y_p - sin(p->angle - M_PI/2);
+			p->x_p  = p->x_p + cos(p->angle - M_PI/2)*3;
+			p->y_p  = p->y_p - sin(p->angle - M_PI/2)*3;
 		}
 		put_player(p);
 		put_line(p, 25);
