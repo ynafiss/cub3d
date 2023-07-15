@@ -6,7 +6,7 @@
 /*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 20:50:20 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/14 10:01:44 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/15 17:25:48 by ynafiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # define W 1000
 # define H 1000
+# define PI 3.14159
 
 typedef struct s_arg
 {
@@ -38,6 +39,8 @@ typedef struct need_hook
 	int				len;
 	char			dir;
 	int				high;
+	double			old_x;
+	double			old_y;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	void			*mlx_img;
