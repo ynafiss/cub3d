@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_pixels.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 22:57:02 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/15 17:44:00 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/16 04:23:21 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	draw_wall(double x, double y, int i, t_mlx *p, double j, int color, int h_v
 		color = 16411660;
 	if (h_v == 0 && x < p->x_p)
 		color = 16511660;
+	if (end > H)
+		end = H;
 	while (start <= end)
 	{
 		put_one_pixel(p, i, start, color);
@@ -159,6 +161,7 @@ void	put_line(t_mlx *p, int len)
 		x++;
 		j -= 0.0008;
 	}
+	ft_fill_map(p, 0, 0);
 }
 void	put_player(t_mlx *p)
 {
