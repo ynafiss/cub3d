@@ -6,7 +6,7 @@
 /*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 20:01:44 by ynafiss           #+#    #+#             */
-/*   Updated: 2023/07/21 20:56:20 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/21 20:57:39 by ynafiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_move_dir(char **map, t_mlx *p, int x, int y)
 			p->x_p  = p->x_p - cos(p->angle) * 8;
 			p->y_p  = p->y_p + sin(p->angle) * 8;
 		}
-	put_player(p);
+		put_player(p);
 		put_line(p, 25);
 	}
 	else if(p->dir == 'l')
@@ -96,7 +96,7 @@ void	ft_move_dir(char **map, t_mlx *p, int x, int y)
 			p->x_p  = p->x_p + cos(p->angle + M_PI/2) * 8;
 			p->y_p  = p->y_p - sin(p->angle + M_PI/2) * 8;
 		}
-	put_player(p);
+		put_player(p);
 		put_line(p, 25);
 	}
 	else if(p->dir == 'r')
@@ -131,7 +131,7 @@ int	move_key(int m, t_mlx *p)
 		if (p->angle <= 0)
 			p->angle = 2 * M_PI;
 			put_player(p);
-		put_line(p, 25);
+			put_line(p, 25);
 	}
 	else if(m == 123)
 	{
@@ -140,7 +140,7 @@ int	move_key(int m, t_mlx *p)
 		if (p->angle >= 2 * M_PI)
 			p->angle = 0;
 		p->angle += 0.1;
-put_player(p);
+		put_player(p);
 		put_line(p, 25);
 	}
 	if (m == 0 ||  m == 2 || m == 13 || m == 1)

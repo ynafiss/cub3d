@@ -6,7 +6,7 @@
 /*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 20:50:20 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/21 19:33:59 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/21 21:04:42 by ynafiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,5 +161,6 @@ void				draw_rect(t_mlx *var, int x, int y, int height, int width,
 						int color);
 void				put_line(t_mlx *p, int len);
 void				put_player(t_mlx *p);
+void				ft_fill_map(t_mlx *p, int x, int y);
 
 #endif

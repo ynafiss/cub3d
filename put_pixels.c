@@ -6,7 +6,7 @@
 /*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 5023/07/12 22:57:02 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/21 20:45:19 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/21 21:08:02 by ynafiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,7 @@ void	put_line(t_mlx *p, int len)
 		x++;
 		j -= 0.0008;
 	}
+	ft_fill_map(p, 0, 0);
 }
 void	put_player(t_mlx *p)
 {

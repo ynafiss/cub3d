@@ -10,7 +10,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME) $(LIBFT)
 
 $(NAME): $(OBJ) $(LIBFT)
-	cc $(CFLAGS) -lmlx -framework OpenGL -framework AppKit  $(SRC) $(LIBFT)  -o $(NAME) 
+	cc $(CFLAGS) -fastf -lmlx -framework OpenGL -framework AppKit  $(SRC) $(LIBFT)  -o $(NAME) 
 
 $(LIBFT):
 	make all -C libft
