@@ -6,7 +6,7 @@
 /*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 5023/07/12 22:57:02 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/21 21:08:02 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/23 15:37:30 by ynafiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 void	put_one_pixel(t_mlx *var,int x, int y, int color)
 {
+	// if ((y * W + x) < W * H)
+	if ((x < 0 && x > W ) && (y < 0 && y > H))
+	{
+		printf("x: %d   y: %d\n", x, y);
+		return;
+	}
 	var->draw_image[y * W + x] = color;
 }
 
-// int	get_color(unsigned int *var,int x, int y)
-// {
-// 	int color;
-
-// 	color = var[y * W + x];
-// 	return (color);
-// }
-
-
 void	put_all_pixel(t_mlx *var,int x, int color)
 {
+	if ((x < 0 && x > W ))
+		return;
 	while(x < W * H)
 	{
 		var->draw_image[x] = color;
@@ -48,110 +47,126 @@ void	draw_rect(t_mlx *var, int x, int y, int height, int width, int color)
         height++;
     }
 }
-int    get_color_w(t_mlx *par, t_west *tex, int endy, int pox)
+int    get_color_w(t_west *tex, int y, int x)
 {
     char    *str;
     int        colore;
 
-    if (endy < 0 || endy >= W || pox < 0 || pox >= H)
+    if (y < 0 || y > H || x < 0 || x > W)
         return (0);
-    str = tex->west_addr + ((int)(endy) *tex->w_line_length)
-        + ((int)(pox) *(tex->w_bits_per_pixel / 8));
+    str = tex->west_addr + ((int)(y) *tex->w_line_length)
+        + ((int)(x) *(tex->w_bits_per_pixel / 8));
     colore = *(int *)str;
     return (colore);
 }
 
-int    get_color_e(t_mlx *par, t_east *tex, int endy, int pox)
+int    get_color_e(t_east *tex, int y, int x)
 {
     char    *str;
     int        colore;
 
-    if (endy < 0 || endy >= W || pox < 0 || pox >= H)
+    if (y < 0 || y > H || x < 0 || x > W)
         return (0);
-    str = tex->east_addr + ((int)(endy) *tex->e_line_length)
-        + ((int)(pox) *(tex->e_bits_per_pixel / 8));
+    str = tex->east_addr + ((int)(y) * tex->e_line_length)
+        + ((int)(x) * (tex->e_bits_per_pixel / 8));
     colore = *(int *)str;
     return (colore);
 }
 
 
-int    get_color_n(t_mlx *par, t_north *tex, int endy, int pox)
+int    get_color_n(t_north *tex, int y, int x)
 {
     char    *str;
     int        colore;
 
-    if (endy < 0 || endy >= W || pox < 0 || pox >= H)
+    if (y < 0 || y > H || x < 0 || x > W)
         return (0);
-    str = tex->north_addr + ((int)(endy) *tex->n_line_length)
-        + ((int)(pox) *(tex->n_bits_per_pixel / 8));
+    str = tex->north_addr + ((int)(y) * tex->n_line_length)
+        + ((int)(x) *(tex->n_bits_per_pixel / 8));
     colore = *(int *)str;
     return (colore);
 }
 
-int    get_color_s(t_mlx *par, t_south *tex, int endy, int pox)
+int    get_color_s(t_south *tex, int y, int x)
 {
     char    *str;
     int        colore;
 
-    if (endy < 0 || endy >= W || pox < 0 || pox >= H)
+    if (x < 0 || x >= W || y < 0 || y >= H)
         return (0);
-    str = tex->south_addr + ((int)(endy) *tex->s_line_length)
-        + ((int)(pox) *(tex->s_bits_per_pixel / 8));
+    str = tex->south_addr + ((int)(y) *tex->s_line_length)
+        + ((int)(x) *(tex->s_bits_per_pixel / 8));
     colore = *(int *)str;
     return (colore);
 }
 
 void draw_wall(double x, double y, double i, t_mlx *p, double angel, int verti)
 {	
-    double	dest;
+    // double	dest;
 	double	wall_h;
 	double	start;
 	double	end;
 	double	t_y;
 	double	t_x;
 	int		r;
+	int		j;
 	int color;
 
 	r = 0;
-    dest = sqrt(pow((int)(x) - (int)p->x_p, 2) + pow((int)(y) - (int)p->y_p, 2)) / 50;
-    if (dest == 0)
-        dest = 1;
-    wall_h = H / (dest * cos(angel - p->angle));
-	start = (H / 2) - (wall_h / 2);
-	end = start + wall_h;
-	if (verti == 1)
-	{
-		t_x = (x / 50 - (int)x / 50) * 50;
-	}
-	if (verti == 2){
-		t_x = (y / 50 - (int)y / 50) * 50;
-	}
+	wall_h = (50 / (sqrt(pow((int)(x) - (int)p->x_p, 2) + pow((int)(y) - (int)p->y_p, 2)) * cos(angel - p->angle)))
+			* ((W / 2) / tan(FOV / 2));
 	t_y = 0;
+	j = 0;
+	start = (H / 2) - (wall_h / 2);
+	if (wall_h >= H){
+		while (start < 0){
+			start++;
+		}
+		j = (wall_h - H) / 2;
+	}
+	end = start + wall_h;
+	if (end > H)
+		end = H;
+	if (verti == 1 && y <= p->y_p)
+	{
+		t_x = (x / 50 - (int)x / 50) * p->north.wight;
+	}
+	if (verti == 1 && y > p->y_p)
+	{
+		t_x = (x / 50 - (int)x / 50) * p->south.wight;
+	}
+	if (verti == 2 && x > p->x_p){
+		t_x = (y / 50 - (int)y / 50) * p->west.wight;
+	}
+	if (verti == 2 && x < p->x_p){
+		t_x = (y / 50 - (int)y / 50) * p->east.wight;
+	}
 	while(r < start)
 		put_one_pixel(p, i, r++, p->sky);
-	while (start <= end)
+	while (start < end)
 	{
 		if (verti == 1  && y <= p->y_p){
-			t_y += p->north.hight / wall_h;
-			color = get_color_n(p, &p->north, t_y, t_x);
+			t_y = (j / wall_h) * p->north.hight;
+			color = get_color_n(&p->north, t_y, t_x);
 		}
 		if (verti == 1 && y > p->y_p){
-			t_y += p->south.hight / wall_h;
-			color = get_color_s(p, &p->south, t_y, t_x);
+			t_y = (j / wall_h) * p->south.hight;
+			color = get_color_s(&p->south, t_y, t_x);
 		}
 		if (verti == 2 && x > p->x_p){
-			t_y += p->west.hight / wall_h;
-			color = get_color_w(p, &p->west, t_y, t_x);
+			t_y = (j / wall_h) * p->west.hight;
+			color = get_color_w(&p->west, t_y, t_x);
 		}
 		if (verti == 2 && x <= p->x_p){
-			t_y += p->east.hight / wall_h;
-			color = get_color_e(p, &p->east, t_y, t_x);
+			t_y = (j / wall_h) * p->east.hight;
+			color = get_color_e(&p->east, t_y, t_x);
 		}
 		put_one_pixel(p, i, start, color);
 		start++;
+		j++;
 	}
-	while(end < H)
-		put_one_pixel(p, i, end++, p->floor);
+	while(start < H)
+		put_one_pixel(p, i, start++, p->floor);
 
 }
 
@@ -183,15 +198,13 @@ void	put_line(t_mlx *p, int len)
 			}
 			else
 			{
-				put_one_pixel(p, ray_x, ray_y, 16710680);
-				ray_x += cos(j) / 3;
-				ray_y -= sin(j) / 3;
+				ray_x += cos(j);
+				ray_y -= sin(j);
 			}
 		}
 		x++;
 		j -= 0.0008;
 	}
-	ft_fill_map(p, 0, 0);
 }
 void	put_player(t_mlx *p)
 {

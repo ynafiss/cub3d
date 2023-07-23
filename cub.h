@@ -6,7 +6,7 @@
 /*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 20:50:20 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/21 21:04:42 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/22 16:12:07 by ynafiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_north
 	int				n_line_length;
 	int				n_endian;
 	int				hight;
+	int				wight;
 }t_north;
 
 typedef struct s_west
@@ -85,6 +86,7 @@ typedef struct s_west
 	int				w_endian;	
 	char			*west_addr;
 	int				hight;
+	int				wight;
 }t_west;
 
 typedef struct s_east
@@ -95,6 +97,7 @@ typedef struct s_east
 	int				e_endian;
 	char			*east_addr;
 	int				hight;
+	int				wight;
 }t_east;
 
 typedef struct s_south
@@ -105,6 +108,7 @@ typedef struct s_south
 	int				s_endian;
 	char			*south_addr;
 	int				hight;
+	int				wight;
 }t_south;
 
 // int    convert_data(t_cub *par, t_tex tex, int endy, int pox)
@@ -126,7 +130,12 @@ typedef struct need_hook
 	int				sky;
 	int				floor;
 	int				vertical;
-	char			dir;
+	int				right;
+	int				left;
+	int				up;
+	int				down;
+	int				rotate_right;
+	int				rotate_left;
 	int				high;
 	double			old_x;
 	double			old_y;
