@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 20:50:20 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/24 23:21:06 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/25 15:34:55 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,15 @@
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
+# include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <stdint.h> 
 # include <string.h>
 
 # define W 1200
 # define H 1000
 # define PI 3.14159
-# define TOW_PI PI * 2
-# define FOV 60 * (PI / 180)
-# define RAYS_NUM 100
-# define TAILE 50
+# define FOV 60
 
 typedef struct s_arg
 {
@@ -41,31 +38,31 @@ typedef struct s_arg
 
 typedef struct s_ray
 {
-	double	angel;
-	double	hit_x;
-	double	hit_y;
-	double	dest;
-	int		is_vertial;
-	int	x_inter;
-	int y_inter;
-	double	x_step;
-	double y_step;
-	double	check_x;
-	double	check_y;
-	int	is_it_wall;
-	double	horez_wall_y ;
-	double	horez_wall_x ;
-	double	next_horez_wall_y;
-	double	next_horez_wall_x;
-	int		is_ray_right;
-	int		is_ray_left;
-	int		is_ray_down;
-	int		is_ray_up;
-	double	verti_wall_y;
-	double	verti_wall_x;
-	double	next_verti_wall_y;
-	double	next_verti_wall_x;
-}t_rays;
+	double			angel;
+	double			hit_x;
+	double			hit_y;
+	double			dest;
+	int				is_vertial;
+	int				x_inter;
+	int				y_inter;
+	double			x_step;
+	double			y_step;
+	double			check_x;
+	double			check_y;
+	int				is_it_wall;
+	double			horez_wall_y;
+	double			horez_wall_x;
+	double			next_horez_wall_y;
+	double			next_horez_wall_x;
+	int				is_ray_right;
+	int				is_ray_left;
+	int				is_ray_down;
+	int				is_ray_up;
+	double			verti_wall_y;
+	double			verti_wall_x;
+	double			next_verti_wall_y;
+	double			next_verti_wall_x;
+}					t_rays;
 
 typedef struct s_north
 {
@@ -76,21 +73,21 @@ typedef struct s_north
 	int				n_endian;
 	int				hight;
 	int				wight;
-}t_north;
+}					t_north;
 
 typedef struct s_west
 {
 	void			*west;
 	int				w_bits_per_pixel;
 	int				w_line_length;
-	int				w_endian;	
+	int				w_endian;
 	char			*west_addr;
 	int				hight;
 	int				wight;
-}t_west;
+}					t_west;
 
 typedef struct s_east
-{	
+{
 	void			*east;
 	int				e_bits_per_pixel;
 	int				e_line_length;
@@ -98,51 +95,18 @@ typedef struct s_east
 	char			*east_addr;
 	int				hight;
 	int				wight;
-}t_east;
+}					t_east;
 
 typedef struct s_south
 {
-	void			*south;	
+	void			*south;
 	int				s_bits_per_pixel;
 	int				s_line_length;
 	int				s_endian;
 	char			*south_addr;
 	int				hight;
 	int				wight;
-}t_south;
-// 	if(p->up == 1)
-// 	{
-// 			if (map[(int)((p->y_p ) / 50)][(int)((p->x_p + cos(p->angle) * 12) / 50)] != '1')
-// 				p->x_p  = p->x_p + cos(p->angle) * 4;
-// 			if (map[(int)((p->y_p - sin(p->angle) * 12) / 50)][(int)((p->x_p) / 50)] != '1')
-// 				p->y_p  = p->y_p - sin(p->angle) * 4;
-// 		put_line(p, 25);
-// 	}
-// 	else if(p->down == 1)
-// 	{
-// 			if (map[(int)(p->y_p / 50)][(int)((p->x_p - cos(p->angle) * 12) / 50)] != '1')
-// 				p->x_p  = p->x_p - cos(p->angle) * 4;
-// 			if (map[(int)((p->y_p + sin(p->angle) * 12) / 50)][(int)(p->x_p / 50)] != '1' )
-// 				p->y_p  = p->y_p + sin(p->angle) * 4;
-// 		put_line(p, 25);
-// 	}
-// 	else if(p->left == 1)
-// 	{
-// 			if (map[(int)((p->y_p) / 50)][(int)((p->x_p + cos(p->angle + M_PI/2) * 12) / 50)] != '1' )
-// 				p->x_p  = p->x_p + cos(p->angle + M_PI/2) * 4;
-// 			if (map[(int)((p->y_p - sin(p->angle + M_PI/2) * 12) / 50)][(int)(p->x_p / 50)] != '1')
-// 			p->y_p  = p->y_p - sin(p->angle + M_PI/2) * 4;
-// 		put_line(p, 25);
-// 	}
-// 	else if(p->right == 1)
-// 	{
-// 			if (map[(int)(p->y_p / 50)][(int)((p->x_p + cos(p->angle - M_PI/2) * 12) / 50)] != '1')
-// 				p->x_p  = p->x_p + cos(p->angle - M_PI/2) * 4;
-// 			if (map[(int)((p->y_p - sin(p->angle - M_PI/2) * 12) / 50)][(int)(p->x_p / 50)] != '1')
-// 			p->y_p  = p->y_p - sin(p->angle - M_PI/2) * 4;
-// 		put_line(p, 25);
-// 	}
-// }
+}					t_south;
 
 typedef struct need_hook
 {
@@ -192,9 +156,12 @@ void				put_line(t_mlx *p);
 void				draw_sky_floor(t_mlx *p, double start, int i, double end);
 void				put_player(t_mlx *p);
 void				ft_fill_map(t_mlx *p, int x, int y);
-int    get_color_w(t_west *tex, int y, int x);
-int    get_color_e(t_east *tex, int y, int x);
-int    get_color_n(t_north *tex, int y, int x);
-int    get_color_s(t_south *tex, int y, int x);
+int					get_color_w(t_west *tex, int y, int x);
+int					get_color_e(t_east *tex, int y, int x);
+int					get_color_n(t_north *tex, int y, int x);
+int					get_color_s(t_south *tex, int y, int x);
+void				textuer_inis(t_mlx *p, t_arg *arg);
+void				ft_move_dir(char **map, t_mlx *p);
+int					move_player(t_mlx *p);
 
 #endif

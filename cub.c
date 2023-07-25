@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 19:57:25 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/23 16:40:17 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/25 20:34:47 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,16 @@ char	*ft_read_map(char *str, char **data)
 	return (s);
 }
 
+int	check_cub(char *str)
+{
+	char	*s;
+
+	s = ft_strrchr(str, '.');
+	if (ft_memcmp(s, ".cub\0", 5) == 0)
+		return (1);
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	char	*file;
@@ -61,6 +71,8 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
+		if (check_cub(av[1]) == 0)
+			ft_error_exit("\033[0;33mERROR! :extension must be [.cub]");
 		data = ft_strdup("");
 		file = ft_read_map(av[1], &data);
 		tmp = ft_split(file, '\n');

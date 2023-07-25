@@ -6,11 +6,12 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:26:17 by rchmouk           #+#    #+#             */
-/*   Updated: 2022/11/12 20:10:52 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/25 14:31:44 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "header.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -40,7 +41,7 @@ char	*ft_strdup(const char	*s1)
 	char	*p;
 
 	i = 0;
-	p = malloc(ft_strlen(s1) + 1);
+	p = my_malloc(ft_strlen(s1) + 1);
 	if (p == 0)
 		return (0);
 	while (s1[i])
@@ -64,7 +65,7 @@ char	*ft_strjoin(char	*s1, char	*s2)
 		return (ft_strdup(s2));
 	j = ft_strlen(s1);
 	i = -1;
-	s3 = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	s3 = my_malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!s3)
 		return (0);
 	while (s1[++i] != '\0')

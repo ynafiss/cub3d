@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_pixels.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 5023/07/12 22:57:02 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/24 23:20:49 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/25 15:35:43 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	draw_wall(double i, t_mlx *p, double angel)
 	int		j;
 
 	wall_h = (50 / (sqrt(pow((int)(p->x_ray) - (int)p->x_p, 2) + \
-	pow((int)(p->y_ray) - \
-	(int)p->y_p, 2)) * cos(angel - p->angle))) * ((W / 2) / tan(FOV / 2));
+	pow((int)(p->y_ray) - (int)p->y_p, 2)) * cos(angel - p->angle))) \
+	* ((W / 2) / tan((FOV * (PI / 180)) / 2));
 	j = 0;
 	start = (H / 2) - (wall_h / 2);
 	if (wall_h >= H)

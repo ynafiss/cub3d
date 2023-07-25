@@ -6,11 +6,12 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 15:09:51 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/06/17 21:50:13 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/25 14:18:49 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+#include "header.h"
 
 void	ft_error_exit(char *str)
 {

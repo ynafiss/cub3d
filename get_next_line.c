@@ -6,11 +6,12 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:26:22 by rchmouk           #+#    #+#             */
-/*   Updated: 2022/11/13 17:33:24 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/25 14:32:23 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "header.h"
 
 char	*ft_read(int fd, char *bag)
 {
@@ -18,7 +19,7 @@ char	*ft_read(int fd, char *bag)
 	int		rd;
 
 	rd = 1;
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buffer = my_malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
 	while (!ft_strchr(bag, '\n') && rd)
@@ -50,9 +51,9 @@ char	*ft_line(char *bag)
 	while (bag[i] && bag[i] != '\n')
 		i++;
 	if (bag[i] == '\n')
-		line = malloc(sizeof(char) * (i + 2));
+		line = my_malloc(sizeof(char) * (i + 2));
 	else
-		line = malloc(sizeof(char) * (i + 1));
+		line = my_malloc(sizeof(char) * (i + 1));
 	while (j <= i && bag[j])
 	{
 		line[j] = bag[j];
@@ -79,7 +80,7 @@ char	*ft_cut(char *bag)
 		i++;
 	if (bag[i] == '\n')
 		i++;
-	remainder = malloc(sizeof(char) * (ft_strlen(bag) - i + 1));
+	remainder = my_malloc(sizeof(char) * (ft_strlen(bag) - i + 1));
 	if (!remainder)
 	{
 		free (bag);

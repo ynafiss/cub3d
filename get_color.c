@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 12:30:56 by ynafiss           #+#    #+#             */
-/*   Updated: 2023/07/24 23:27:37 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/25 14:19:23 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ int	get_color_s(t_south *tex, int y, int x)
 		return (0);
 	str = tex->south_addr + ((int)(y) *tex->s_line_length)
 		+ ((int)(x) *(tex->s_bits_per_pixel / 8));
-	color = *(int *)str;
+	colore = *(int *)str;
 	return (colore);
 }

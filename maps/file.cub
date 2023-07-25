@@ -1,12 +1,13 @@
-         NO            ./green_stone.xpm
+NO     ./textuer/red_stone.xpm    
 
-SO                     ./red_stone.xpm
+SO                       ./textuer/green_stone.xpm    
+SO                       ./textuer/green_stone.xpm    
 
-WE     ./withe_stone.xpm
+WE     ./textuer/withe_stone.xpm
 
-EA      ./gr_stone.xpm
+EA      ./textuer/gr_stone.xpm
 
-F 222,184,135
+F 222,184,255
 
 C 135,206,255
 

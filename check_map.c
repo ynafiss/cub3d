@@ -6,17 +6,20 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 15:07:23 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/06/17 15:39:54 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/25 20:35:05 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+#include "header.h"
 
 int	check_empty(char *str)
 {
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		ft_error_exit("\033[0;31mERROR :invalid map999!\n");
 	while (str[i])
 	{
 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
@@ -53,7 +56,7 @@ int	*tab_len(char **map, int *len_tab)
 	*(len_tab) = 0;
 	while (map[(*len_tab)])
 		(*len_tab)++;
-	tab = malloc(sizeof(int) * (*len_tab));
+	tab = my_malloc(sizeof(int) * (*len_tab));
 	i = 0;
 	while (map[i])
 	{

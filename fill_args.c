@@ -6,11 +6,12 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 15:42:03 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/06/17 20:18:39 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/25 19:15:05 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+#include "header.h"
 
 int	check_int(char *str)
 {
@@ -34,6 +35,16 @@ int	check_int(char *str)
 	return (x);
 }
 
+int	count(char **v)
+{
+	int	i;
+
+	i = 0;
+	while (v[i])
+		i++;
+	return (i);
+}
+
 int	ft_get_rgb(char *str, char c)
 {
 	int		i;
@@ -41,22 +52,19 @@ int	ft_get_rgb(char *str, char c)
 	char	**all;
 
 	i = 0;
-	tab = malloc(sizeof(int) * 3);
+	tab = my_malloc(sizeof(int) * 3);
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		i++;
-	if (str[i] == c)
+	if (str[i++] == c)
 	{
-		i++;
 		while (str[i] && str[i] == ' ')
 			i++;
 		all = ft_split(&str[i], ',');
+		if (count(all) != 3)
+			ft_error_exit("\033[0;31mERROR :invalid map 144!\n");
 		i = -1;
 		while (all[++i])
-		{
-			if (i > 2)
-				ft_error_exit("\033[0;31mERROR :invalid map 103!\n");
 			tab[i] = check_int(all[i]);
-		}
 	}
 	else
 		ft_error_exit("\033[0;31mERROR :invalid map 104!\n");
@@ -82,6 +90,7 @@ char	*ft_get_path(char *str, char a, char b)
 	}
 	else
 		ft_error_exit("\033[0;31mERROR :invalid map 105!\n");
+	path = ft_strtrim(path, " ");
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		ft_error_exit("\033[0;31mERROR :invalid map 106!\n");
@@ -94,7 +103,7 @@ t_arg	*fill_args(char *str)
 	char	**data;
 
 	data = ft_split(str, '\n');
-	arg = malloc(sizeof(t_arg));
+	arg = my_malloc(sizeof(t_arg));
 	arg->no = ft_get_path(data[0], 'N', 'O');
 	arg->so = ft_get_path(data[1], 'S', 'O');
 	arg->we = ft_get_path(data[2], 'W', 'E');
