@@ -6,7 +6,7 @@
 /*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 20:50:20 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/22 16:12:07 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/24 23:21:06 by ynafiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,18 +110,38 @@ typedef struct s_south
 	int				hight;
 	int				wight;
 }t_south;
-
-// int    convert_data(t_cub *par, t_tex tex, int endy, int pox)
-// {
-//     char    *str;
-//     int        colore;
-
-//     if (endy < 0 || endy >= par->width || pox < 0 || pox >= par->height)
-//         return (0);
-//     str = tex.data_add + ((int)(endy) *tex.size_line)
-//         + ((int)(pox) *(tex.bits_pixel / 8));
-//     colore = *(int *)str;
-//     return (colore);
+// 	if(p->up == 1)
+// 	{
+// 			if (map[(int)((p->y_p ) / 50)][(int)((p->x_p + cos(p->angle) * 12) / 50)] != '1')
+// 				p->x_p  = p->x_p + cos(p->angle) * 4;
+// 			if (map[(int)((p->y_p - sin(p->angle) * 12) / 50)][(int)((p->x_p) / 50)] != '1')
+// 				p->y_p  = p->y_p - sin(p->angle) * 4;
+// 		put_line(p, 25);
+// 	}
+// 	else if(p->down == 1)
+// 	{
+// 			if (map[(int)(p->y_p / 50)][(int)((p->x_p - cos(p->angle) * 12) / 50)] != '1')
+// 				p->x_p  = p->x_p - cos(p->angle) * 4;
+// 			if (map[(int)((p->y_p + sin(p->angle) * 12) / 50)][(int)(p->x_p / 50)] != '1' )
+// 				p->y_p  = p->y_p + sin(p->angle) * 4;
+// 		put_line(p, 25);
+// 	}
+// 	else if(p->left == 1)
+// 	{
+// 			if (map[(int)((p->y_p) / 50)][(int)((p->x_p + cos(p->angle + M_PI/2) * 12) / 50)] != '1' )
+// 				p->x_p  = p->x_p + cos(p->angle + M_PI/2) * 4;
+// 			if (map[(int)((p->y_p - sin(p->angle + M_PI/2) * 12) / 50)][(int)(p->x_p / 50)] != '1')
+// 			p->y_p  = p->y_p - sin(p->angle + M_PI/2) * 4;
+// 		put_line(p, 25);
+// 	}
+// 	else if(p->right == 1)
+// 	{
+// 			if (map[(int)(p->y_p / 50)][(int)((p->x_p + cos(p->angle - M_PI/2) * 12) / 50)] != '1')
+// 				p->x_p  = p->x_p + cos(p->angle - M_PI/2) * 4;
+// 			if (map[(int)((p->y_p - sin(p->angle - M_PI/2) * 12) / 50)][(int)(p->x_p / 50)] != '1')
+// 			p->y_p  = p->y_p - sin(p->angle - M_PI/2) * 4;
+// 		put_line(p, 25);
+// 	}
 // }
 
 typedef struct need_hook
@@ -151,6 +171,8 @@ typedef struct need_hook
 	int				endian;
 	unsigned int	*draw_image;
 	void			*img_ptr;
+	double			x_ray;
+	double			y_ray;
 	t_west			west;
 	t_east			east;
 	t_north			north;
@@ -166,10 +188,13 @@ t_arg				*fill_args(char *str);
 void				exc(t_arg *arg, char **map);
 void				put_one_pixel(t_mlx *var, int x, int y, int color);
 void				put_all_pixel(t_mlx *var, int x, int color);
-void				draw_rect(t_mlx *var, int x, int y, int height, int width,
-						int color);
-void				put_line(t_mlx *p, int len);
+void				put_line(t_mlx *p);
+void				draw_sky_floor(t_mlx *p, double start, int i, double end);
 void				put_player(t_mlx *p);
 void				ft_fill_map(t_mlx *p, int x, int y);
+int    get_color_w(t_west *tex, int y, int x);
+int    get_color_e(t_east *tex, int y, int x);
+int    get_color_n(t_north *tex, int y, int x);
+int    get_color_s(t_south *tex, int y, int x);
 
 #endif

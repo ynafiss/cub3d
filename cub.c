@@ -6,7 +6,7 @@
 /*   By: ynafiss <ynafiss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 19:57:25 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/16 08:52:20 by ynafiss          ###   ########.fr       */
+/*   Updated: 2023/07/23 16:40:17 by ynafiss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,3 @@ int	main(int ac, char **av)
 		exc(arg, map);
 	}
 }
-
-// printf("%s\n", arg->no);
-// printf("%s\n", arg->so);
-// printf("%s\n", arg->we);
-// printf("%s\n", arg->ea);
-// printf("%d\n", arg->f);
-// printf("%d\n", arg->c);
