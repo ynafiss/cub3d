@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 19:57:25 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/25 20:34:47 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/25 20:49:50 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	check_cub(char *str)
 	char	*s;
 
 	s = ft_strrchr(str, '.');
+	if (s == NULL)
+		return (0);
 	if (ft_memcmp(s, ".cub\0", 5) == 0)
 		return (1);
 	return (0);
