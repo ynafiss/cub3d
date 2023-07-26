@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 15:07:23 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/25 20:35:05 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 18:50:36 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,13 @@ void	ft_check_map(char **map)
 	i = -1;
 	while (map[len_tab - 1][++i])
 	{
-		if (map[len_tab - 1][i] == '0')
+		if (map[len_tab - 1][i] == '0' || p(map[len_tab - 1][i]) == 0)
 			ft_error_exit("\033[0;31mERROR :invalid map11!\n");
 	}
 	i = -1;
 	while (map[0][++i])
 	{
-		if (map[0][i] == '0')
+		if (map[0][i] == '0' || p(map[0][i]) == 0)
 			ft_error_exit("\033[0;31mERROR :invalid map12!\n");
 	}
 }

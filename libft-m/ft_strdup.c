@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:00:26 by rchmouk           #+#    #+#             */
-/*   Updated: 2022/10/27 17:08:54 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 14:11:57 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char	*s1)
 	char	*p;
 
 	i = 0;
-	p = malloc(ft_strlen(s1) + 1);
+	p = my_malloc(ft_strlen(s1) + 1);
 	if (p == 0)
 		return (0);
 	while (s1[i])

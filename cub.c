@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 19:57:25 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/25 20:49:50 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 21:14:32 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,15 @@ char	*ft_read_map(char *str, char **data)
 	while (tmp)
 	{
 		s = ft_strjoin(s, tmp);
-		free(tmp);
 		tmp = get_next_line(fd);
 		if (tmp == NULL)
+		{
+			if (count > 0)
+				ft_error_exit("\033[0;31mERROR :invalid map1!\n");
 			break ;
+		}
 		helper(&count, tmp, data);
 	}
-	free(tmp);
 	return (s);
 }
 
@@ -61,6 +63,16 @@ int	check_cub(char *str)
 	if (ft_memcmp(s, ".cub\0", 5) == 0)
 		return (1);
 	return (0);
+}
+
+int	count(char **v)
+{
+	int	i;
+
+	i = 0;
+	while (v[i])
+		i++;
+	return (i);
 }
 
 int	main(int ac, char **av)

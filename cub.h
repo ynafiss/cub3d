@@ -6,13 +6,13 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 20:50:20 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/25 15:34:55 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 21:36:04 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
-# include "libft/libft.h"
+# include "libft-m/libft.h"
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
@@ -163,5 +163,12 @@ int					get_color_s(t_south *tex, int y, int x);
 void				textuer_inis(t_mlx *p, t_arg *arg);
 void				ft_move_dir(char **map, t_mlx *p);
 int					move_player(t_mlx *p);
+int					count(char **v);
+int					p(char c);
+void				check_all_nor(int i, int j, char **map, int *tab);
+void				check_all_nor2(int *x, int i, int j, char **map);
+void				rgb_help(int *i, char *str, char **all, int *tab);
+int					check_character(char c);
+int					check_int(char *str);
 
 #endif

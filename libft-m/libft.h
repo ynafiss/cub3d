@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rchmouk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:10:45 by rchmouk           #+#    #+#             */
-/*   Updated: 2022/10/27 17:10:54 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 16:17:47 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 # define LIBFT_H
 
-# include<unistd.h>
-# include<stdlib.h>
+# include "../header.h"
+# include <stdlib.h>
+# include <unistd.h>
 
 int		ft_isalpha(int a);
 int		ft_isdigit(int a);
@@ -24,12 +25,9 @@ int		ft_isascii(int a);
 int		ft_isprint(int a);
 size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *s, int c);
-void	*ft_memset(void *b, int c, size_t len);
 int		ft_atoi(const char *str);
-void	ft_bzero(void *s, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
@@ -51,5 +49,5 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int nb, int fd);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 #endif

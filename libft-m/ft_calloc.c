@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:54:27 by rchmouk           #+#    #+#             */
-/*   Updated: 2022/10/27 17:08:08 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 14:11:47 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_calloc(size_t	count, size_t	size)
 	i = 0;
 	if (size && count > SIZE_MAX / size)
 		return (0);
-	p = malloc(size * count);
+	p = my_malloc(size * count);
 	if (!p)
 		return (0);
 	while (i < size * count)

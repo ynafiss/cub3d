@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:02:48 by rchmouk           #+#    #+#             */
-/*   Updated: 2022/10/29 18:55:15 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 14:12:11 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	if (!s || f == NULL)
 		return (0);
-	ptr = malloc(ft_strlen(s) + 1);
+	ptr = my_malloc(ft_strlen(s) + 1);
 	if (!ptr)
 		return (NULL);
 	while (s[i])

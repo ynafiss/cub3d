@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 15:09:51 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/25 14:18:49 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 21:36:24 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,31 +38,36 @@ int	check_character(char c)
 	return (1);
 }
 
+int	p(char c)
+{
+	if (c == 'N' || c == 'E' || c == 'W' || c == 'S')
+		return (0);
+	return (1);
+}
+
 void	check_all_sides(char **map, int len, int *tab)
 {
 	int	i;
 	int	j;
+	int	x;
 
-	i = 0;
-	while (map[i])
+	i = -1;
+	x = 0;
+	while (map[++i])
 	{
 		j = -1;
 		while (map[i][++j])
 		{
-			if (check_character(map[i][j]) == 1)
-				ft_error_exit("\033[0;31mERROR :invalid map7!\n");
+			check_all_nor2(&x, i, j, map);
 			if (map[i][j] == ' ' || map[i][j] == '\t')
 			{
-				if (map[i][j + 1] == '0')
-					ft_error_exit("\033[0;31mERROR :invalid map8!\n");
-				if (j > 0 && map[i][j - 1] == '0')
-					ft_error_exit("\033[0;31mERROR :invalid map9!\n");
-				if (i > 0 && i <= tab[i - 1] && map[i - 1][j] == '0')
-					ft_error_exit("\033[0;31mERROR :invalid map!\n");
-				if (i < len - 1 && i <= tab[i + 1] && map[i + 1][j] == '0')
+				check_all_nor(i, j, map, tab);
+				if (i < len - 1 && j < tab[i + 1] && map[i + 1][j] != '1'
+					&& map[i + 1][j] != ' ')
 					ft_error_exit("\033[0;31mERROR :invalid map10!\n");
 			}
 		}
-		i++;
 	}
+	if (x != 1)
+		ft_error_exit("\033[0;31mERROR :invalid map!\n");
 }

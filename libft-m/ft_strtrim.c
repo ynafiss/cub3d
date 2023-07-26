@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:05:09 by rchmouk           #+#    #+#             */
-/*   Updated: 2022/10/29 19:11:40 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 14:12:16 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		j--;
 	if (i > j)
 		i = j;
-	s2 = malloc (sizeof(char) * (j - i + 1));
+	s2 = my_malloc (sizeof(char) * (j - i + 1));
 	if (!s2)
 		return (0);
 	size = j - i;

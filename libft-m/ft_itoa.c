@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:56:29 by rchmouk           #+#    #+#             */
-/*   Updated: 2022/10/27 17:14:17 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 14:11:40 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_itoa(int n)
 	i = 0;
 	x = n;
 	nb = count(x);
-	str = malloc(nb + 1);
+	str = my_malloc(nb + 1);
 	if (!str)
 		return (0);
 	if (x < 0)

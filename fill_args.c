@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 15:42:03 by rchmouk           #+#    #+#             */
-/*   Updated: 2023/07/25 19:15:05 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 21:33:29 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,37 +35,29 @@ int	check_int(char *str)
 	return (x);
 }
 
-int	count(char **v)
-{
-	int	i;
-
-	i = 0;
-	while (v[i])
-		i++;
-	return (i);
-}
-
 int	ft_get_rgb(char *str, char c)
 {
 	int		i;
 	int		*tab;
 	char	**all;
+	int		x;
 
+	x = 0;
+	i = -1;
+	all = NULL;
+	while (str[++i])
+	{
+		if (str[i] == ',')
+			x++;
+	}
+	if (x != 2)
+		ft_error_exit("\033[0;31mERROR :invalid map 106!\n");
 	i = 0;
 	tab = my_malloc(sizeof(int) * 3);
 	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		i++;
 	if (str[i++] == c)
-	{
-		while (str[i] && str[i] == ' ')
-			i++;
-		all = ft_split(&str[i], ',');
-		if (count(all) != 3)
-			ft_error_exit("\033[0;31mERROR :invalid map 144!\n");
-		i = -1;
-		while (all[++i])
-			tab[i] = check_int(all[i]);
-	}
+		rgb_help(&i, str, all, tab);
 	else
 		ft_error_exit("\033[0;31mERROR :invalid map 104!\n");
 	return ((tab[0] << 16) + (tab[1] << 8) + tab[2]);
@@ -97,6 +89,35 @@ char	*ft_get_path(char *str, char a, char b)
 	return (path);
 }
 
+void	help_fill_arg(t_arg *arg, char **data)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	j = 0;
+	while (++i <= 5)
+	{
+		j = 0;
+		while (data[i][j] && (data[i][j] == ' ' || data[i][j] == '\t'))
+			j++;
+		if (data[i][j] == 'N' && data[i][j + 1] == 'O')
+			arg->no = ft_get_path(data[i], 'N', 'O');
+		else if (data[i][j] == 'S' && data[i][j + 1] == 'O')
+			arg->so = ft_get_path(data[i], 'S', 'O');
+		else if (data[i][j] == 'W' && data[i][j + 1] == 'E')
+			arg->we = ft_get_path(data[i], 'W', 'E');
+		else if (data[i][j] == 'E' && data[i][j + 1] == 'A')
+			arg->ea = ft_get_path(data[i], 'E', 'A');
+		else if (data[i][j] == 'F')
+			arg->f = ft_get_rgb(data[i], 'F');
+		else if (data[i][j] == 'C')
+			arg->c = ft_get_rgb(data[i], 'C');
+		else
+			ft_error_exit("\033[0;31mERROR :invalid map 106!\n");
+	}
+}
+
 t_arg	*fill_args(char *str)
 {
 	t_arg	*arg;
@@ -104,11 +125,6 @@ t_arg	*fill_args(char *str)
 
 	data = ft_split(str, '\n');
 	arg = my_malloc(sizeof(t_arg));
-	arg->no = ft_get_path(data[0], 'N', 'O');
-	arg->so = ft_get_path(data[1], 'S', 'O');
-	arg->we = ft_get_path(data[2], 'W', 'E');
-	arg->ea = ft_get_path(data[3], 'E', 'A');
-	arg->f = ft_get_rgb(data[4], 'F');
-	arg->c = ft_get_rgb(data[5], 'C');
+	help_fill_arg(arg, data);
 	return (arg);
 }

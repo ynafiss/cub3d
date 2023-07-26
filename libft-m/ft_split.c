@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 16:59:27 by rchmouk           #+#    #+#             */
-/*   Updated: 2022/10/30 21:23:55 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 14:11:52 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static	char	*alloc(char const	*s, char c)
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
-	ptr = malloc(sizeof(char) * (i + 1));
+	ptr = my_malloc(sizeof(char) * (i + 1));
 	if (!(ptr))
 	{
 		free(ptr);

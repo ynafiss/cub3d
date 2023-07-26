@@ -6,7 +6,7 @@
 /*   By: rchmouk <rchmouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 17:05:28 by rchmouk           #+#    #+#             */
-/*   Updated: 2022/10/29 19:05:29 by rchmouk          ###   ########.fr       */
+/*   Updated: 2023/07/26 14:12:20 by rchmouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = a;
 	if (start >= ft_strlen(s))
 		len = 0;
-	sb = malloc((len + 1) * sizeof(char));
+	sb = my_malloc((len + 1) * sizeof(char));
 	if (!sb)
 		return (0);
 	if (start > ft_strlen(s))
